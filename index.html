@@ -5,16 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kristine's AI Assistant</title>
     <style>
-        body, html {
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
             height: 100%;
             width: 100%;
             overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
         .iframe-wrapper {
             width: 100%;
-            height: calc(100% + 60px);
+            height: calc(100% - 70px + 60px);
             overflow: hidden;
         }
         iframe {
@@ -25,6 +44,10 @@
     </style>
 </head>
 <body>
+    <div class="header">
+        <h1>💬 Chat with Kristine's AI Assistant</h1>
+        <p>Ask me about my career, skills, projects, and experience!</p>
+    </div>
     <div class="iframe-wrapper">
         <iframe
             src="https://whitelilly-app-py.hf.space"
