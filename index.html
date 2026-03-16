@@ -3,41 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kristine's AI Assistant</title>
+    <title>Kristine's AI Career Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html {
             height: 100%;
             width: 100%;
             overflow: hidden;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
         }
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: white;
-            padding: 12px 30px;
-            text-align: center;
-            height: 60px;
+            padding: 18px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 10;
         }
-        .header h1 {
+        .avatar {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+        }
+        .header-text h1 {
             font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 2px;
+            letter-spacing: -0.3px;
         }
-        .header p {
-            font-size: 0.8rem;
-            opacity: 0.9;
+        .header-text p {
+            font-size: 0.78rem;
+            opacity: 0.7;
+            font-weight: 300;
+            margin-top: 2px;
         }
-        .iframe-wrapper {
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255,255,255,0.1);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-top: 4px;
+        }
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: #00d26a;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .chat-container {
             width: 100%;
-            height: calc(100vh - 60px);
-            overflow-y: scroll;
-            margin-bottom: -50px;
-            padding-bottom: 0;
+            height: calc(100vh - 85px);
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 40px rgba(0,0,0,0.08);
         }
         iframe {
             width: 100%;
@@ -49,25 +88,21 @@
 </head>
 <body>
     <div class="header">
-        <h1>💬 Chat with Kristine's AI Assistant</h1>
-        <p>Ask me about my career, skills, projects, and experience!</p>
+        <div class="avatar">👩‍💻</div>
+        <div class="header-text">
+            <h1>Kristine's AI Career Assistant</h1>
+            <p>Powered by AI · Ask about my skills, experience & projects</p>
+            <div class="status">
+                <span class="status-dot"></span>
+                Online
+            </div>
+        </div>
     </div>
-    <div class="iframe-wrapper">
+    <div class="chat-container">
         <iframe
             src="https://whitelilly-app-py.hf.space"
             allow="microphone"
         ></iframe>
     </div>
-
-    <script>
-        // Auto-scroll the iframe wrapper down slightly to hide Gradio header
-        // and keep footer hidden below the fold
-        window.addEventListener('load', function() {
-            const wrapper = document.querySelector('.iframe-wrapper');
-            // Make iframe taller than wrapper so footer is below visible area
-            const iframe = document.querySelector('iframe');
-            iframe.style.height = 'calc(100vh - 60px + 40px)';
-        });
-    </script>
 </body>
 </html>
